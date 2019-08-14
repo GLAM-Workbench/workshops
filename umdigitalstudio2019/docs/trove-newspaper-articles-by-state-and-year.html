@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .vega-actions a {
+        margin-right: 12px;
+        color: #757575;
+        font-weight: normal;
+        font-size: 13px;
+    }
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@3.4.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@4"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"width": 400, "height": 300}, "mark": {"tooltip": null}}, "vconcat": [{"hconcat": [{"data": {"url": "altair-data-9c937fa0554f2ebde62b20c96fac478f.json", "format": {"type": "json"}}, "mark": "area", "encoding": {"color": {"condition": {"type": "nominal", "field": "state", "legend": null, "selection": "selector001"}, "value": "lightgray"}, "tooltip": [{"type": "nominal", "field": "state"}, {"type": "quantitative", "field": "term", "title": "Year"}, {"type": "quantitative", "field": "total_results", "format": ",", "title": "Articles"}], "x": {"type": "quantitative", "axis": {"format": "c", "title": "Year"}, "field": "term"}, "y": {"type": "quantitative", "axis": {"format": ",d", "title": "Number of articles"}, "field": "total_results", "stack": true}}, "height": 400, "selection": {"selector001": {"type": "multi", "encodings": ["color"]}}, "transform": [{"filter": {"selection": "selector001"}}], "width": 700}, {"data": {"url": "altair-data-d483119d00b07310431a44a9932f602a.json", "format": {"type": "json"}}, "mark": "rect", "encoding": {"color": {"condition": {"type": "nominal", "field": "state", "legend": null, "selection": "selector001"}, "value": "lightgray"}, "y": {"type": "nominal", "axis": {"orient": "right", "title": null}, "field": "state"}}, "selection": {"selector001": {"type": "multi", "encodings": ["color"]}}}]}, {"data": {"url": "altair-data-d483119d00b07310431a44a9932f602a.json", "format": {"type": "json"}}, "mark": "bar", "encoding": {"color": {"condition": {"type": "nominal", "field": "state", "legend": null, "selection": "selector001"}, "value": "lightgray"}, "tooltip": [{"type": "nominal", "field": "state", "title": "State"}, {"type": "quantitative", "field": "total_results", "format": ",", "title": "Articles"}], "x": {"type": "nominal", "field": "state", "title": "State"}, "y": {"type": "quantitative", "axis": {"format": ",d", "title": "Number of articles"}, "field": "total_results"}}, "height": 150, "selection": {"selector001": {"type": "multi", "encodings": ["color"]}}, "width": 700}], "$schema": "https://vega.github.io/schema/vega-lite/v3.4.0.json"};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
