@@ -70,7 +70,7 @@ traitlets==4.3.2
 traittypes==0.2.1
 troveharvester==0.2.2
 unicodecsv==0.14.1
-urllib3==1.25.3
+urllib3==1.26.5
 vega==2.5.0
 vega-datasets==0.7.0
 wcwidth==0.1.7
